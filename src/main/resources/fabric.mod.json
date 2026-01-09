@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"id": "softlightlib",
+	"id": "lumenium",
 	"version": "${version}",
-	"name": "SoftlightLib",
-	"description": "Small library to help with items and rendering.",
+	"name": "Lumenium",
+	"description": "Simple library to help with items, effects and rendering.",
 	"authors": [
 		"Lumii"
 	],
@@ -12,18 +12,18 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/softlightlib/icon.png",
+	"icon": "assets/lumenium/icon_rev.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.lumii.softlightlib.SoftlightLib"
+			"com.lumii.lumenium.Lumenium"
 		],
 		"fabric-datagen": [
-			"com.lumii.softlightlib.SoftlightLibDataGenerator"
+			"com.lumii.lumenium.LumeniumDataGenerator"
 		]
 	},
 	"mixins": [
-		"softlightlib.mixins.json"
+		"lumenium.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.4",
