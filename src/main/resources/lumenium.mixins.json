@@ -17,7 +17,6 @@
   },
   "client": [
     "BipedEntityModelAccessor",
-    "BipedEntityModelMixin",
-    "PlayerEntityRendererMixin"
+    "BipedEntityModelMixin"
 	]
 }

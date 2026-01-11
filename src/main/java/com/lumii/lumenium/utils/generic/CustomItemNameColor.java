@@ -4,7 +4,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
-public interface CustomNameColor {
+public interface CustomItemNameColor {
     int getHexColor(ItemStack stack);
 
     default Text getColoredName(ItemStack stack) {

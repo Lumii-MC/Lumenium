@@ -1,6 +1,6 @@
 package com.lumii.lumenium.testing;
 
-import com.lumii.lumenium.utils.generic.CustomNameColor;
+import com.lumii.lumenium.utils.generic.CustomItemNameColor;
 import com.lumii.lumenium.utils.item.OnKillEffectItem;
 import com.lumii.lumenium.utils.item.TwoHandedItem;
 import com.lumii.lumenium.utils.render.BeamRenderer;
@@ -17,7 +17,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class TestItem extends Item implements TwoHandedItem, CustomNameColor, OnKillEffectItem {
+public class TestItem extends Item implements TwoHandedItem, CustomItemNameColor, OnKillEffectItem {
     public TestItem(Settings settings) {
         super(settings);
     }

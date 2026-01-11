@@ -8,10 +8,11 @@
 		"Lumii"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/lumenium",
+		"sources": "https://github.com/FabricMC/fabric-example-mod",
+		"license": "https://github.com/Lumii-MC/Lumenium-Licensing-and-Documentation"
 	},
-	"license": "CC0-1.0",
+	"license": "Lumenium license",
 	"icon": "assets/lumenium/icon_rev.png",
 	"environment": "*",
 	"entrypoints": {

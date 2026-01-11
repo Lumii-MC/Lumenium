@@ -1,6 +1,6 @@
 package com.lumii.lumenium.testing;
 
-import com.lumii.lumenium.utils.generic.CustomNameColor;
+import com.lumii.lumenium.utils.generic.CustomItemNameColor;
 import com.lumii.lumenium.utils.item.OnKillEffectItem;
 import com.lumii.lumenium.utils.item.TwoHandedItem;
 import com.lumii.lumenium.utils.render.BeamRenderer;
@@ -18,7 +18,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class AltTestItem extends SwordItem implements TwoHandedItem, CustomNameColor, OnKillEffectItem {
+public class AltTestItem extends SwordItem implements TwoHandedItem, CustomItemNameColor, OnKillEffectItem {
     public AltTestItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
