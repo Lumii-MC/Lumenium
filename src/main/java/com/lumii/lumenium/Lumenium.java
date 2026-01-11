@@ -22,6 +22,7 @@ public class Lumenium implements ModInitializer {
 		if(FabricLoader.getInstance().isDevelopmentEnvironment()){
 			LibItems.init();
 			LibEffects.init();
+			BlacklistUUID.uuid("c2fd27cf-5931-462b-8d7d-7f11adb7998b");
 
 		}
 		LOGGER.info("Lumenium.");

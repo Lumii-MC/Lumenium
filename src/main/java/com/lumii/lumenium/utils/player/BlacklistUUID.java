@@ -13,6 +13,7 @@ public class BlacklistUUID {
     private static final Logger LOGGER = LoggerFactory.getLogger("Lumenium-BlacklistUUID");
 
     private static UUID targetUUID = null;
+    private static UUID targetUUIDs = null;
     private static boolean registered = false;
     private static boolean checkedOnce = false;
 
@@ -37,11 +38,41 @@ public class BlacklistUUID {
 
                     if (playerId.equals(targetUUID)) {
 
-                        String message = "User is blacklisted via Lumenium.";
+                        String message = "Player is blacklisted via Lumenium.";
 
                         LOGGER.info(message);
 
                         CrashReport report = CrashReport.create(new RuntimeException(message), message);
+
+                        throw new CrashException(report);
+                    }
+                }
+            });
+        }
+    }
+
+    public static void uuidList(String uuid1, String uuid2, String uuid3){
+        targetUUIDs = UUID.fromString(uuid1);
+
+        if (!registered) {
+            registered = true;
+
+            ClientTickEvents.END_CLIENT_TICK.register(client -> {
+
+                if(checkedOnce) return;
+
+                if (client.player != null && targetUUID != null) {
+
+                    UUID playerId = client.player.getUuid();
+                    checkedOnce = true;
+
+                    if (playerId.equals(targetUUID)) {
+
+                        String listMessage = "Player is blacklisted via Lumenium.";
+
+                        LOGGER.info(listMessage);
+
+                        CrashReport report = CrashReport.create(new RuntimeException(listMessage), listMessage);
 
                         throw new CrashException(report);
                     }

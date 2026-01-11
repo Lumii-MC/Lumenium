@@ -52,13 +52,27 @@ public class TestItem extends Item implements TwoHandedItem, CustomNameColor, On
                     0f
             );
         }
+        if (hand.equals(Hand.OFF_HAND) && world.isClient){
+            SphereRenderer.scheduleClient(
+                    new Vec3d(user.getX()+0, user.getY()+1, user.getZ()+0),
+                    100f,
+                    100f,
+                    new Identifier("lumenium:textures/rendered/2k_stars_milky_way.png"),
+                    Integer.MAX_VALUE,
+                    1f,
+                    false,
+                    0,
+                    0f
+            );
+        }
+
 
         if(!world.isClient){
             BeamRenderer.scheduleCommon(
                     (ServerWorld) world,
                     new Vec3d(user.getX(), user.getY()-5, user.getZ()),
-                    1f,
-                    1f,
+                    0.5f,
+                    0.5f,
                     600f,
                     new Identifier("minecraft:textures/misc/white.png"),
                     20,
@@ -66,7 +80,7 @@ public class TestItem extends Item implements TwoHandedItem, CustomNameColor, On
                     true,
                     15,
                     1f,
-                    10f,
+                    100f,
                     0f
             );
         }
