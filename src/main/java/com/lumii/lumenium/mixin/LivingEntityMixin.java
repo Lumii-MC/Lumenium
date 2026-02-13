@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -36,28 +37,28 @@ public abstract class LivingEntityMixin extends Entity {
     private void killSave(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
         LivingEntity living = (LivingEntity)(Object)this;
         Entity attacker = source.getAttacker();
-        if (attacker instanceof LivingEntity livingAttacker) {
-            ItemStack stack = livingAttacker.getMainHandStack();
+        if (attacker instanceof LivingEntity lAttacker) {
+            ItemStack stack = lAttacker.getMainHandStack();
             if (stack.getItem() instanceof KillSaveItem killSave) {
-                if (killSave.killEntity(livingAttacker.getWorld(), stack, livingAttacker, living)) {
+                if (killSave.killEntity(attacker.getWorld(), stack, lAttacker, living)) {
                     cir.setReturnValue(true);
                 }
             }
         }
     }
 
-    @WrapMethod(method = "clearStatusEffects")
-    private boolean preventClear(Operation<Boolean> original) {
-        LivingEntity living = (LivingEntity)(Object)this;
-        if (!living.getWorld().isClient()) {
-            for (StatusEffectInstance instance : living.getActiveStatusEffects().values()) {
-                if (instance.getEffectType() instanceof UnclearableEffect) {
-                    boolean result = original.call();
-                    this.addStatusEffect(instance);
-                    return result;
-                }
+    @Inject(method = "removeStatusEffect", at = @At("HEAD"), cancellable = true)
+    private void lumenium$stopClear(CallbackInfoReturnable<Boolean> cir) {
+        LivingEntity self = (LivingEntity)(Object)this;
+
+        // if the entity has any UnclearableEffect, prevent clearing.
+        for (StatusEffectInstance inst : self.getActiveStatusEffects().values()) {
+            if (inst.getEffectType() instanceof UnclearableEffect) {
+                cir.setReturnValue(false);
+                cir.cancel();
+                return;
             }
         }
-        return original.call();
     }
+
 }

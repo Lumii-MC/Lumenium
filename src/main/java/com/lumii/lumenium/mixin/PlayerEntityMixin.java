@@ -1,6 +1,5 @@
 package com.lumii.lumenium.mixin;
 
-import com.lumii.lumenium.utils.item.ReapingItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -29,11 +28,6 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     private void attackTargetOnCrit(Entity target, CallbackInfo ci) {
         PlayerEntity player = (PlayerEntity) (Object) this;
         ItemStack stack = this.getStackInHand(Hand.MAIN_HAND);
-
-        if (stack.getItem() instanceof ReapingItem item && target instanceof LivingEntity living) {
-            // Call the weapon's reaping behavior instead of hardcoding an effect
-            item.onReap(player, stack, living);
-        }
 
     }
 }

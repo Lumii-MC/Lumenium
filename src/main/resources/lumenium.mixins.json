@@ -17,6 +17,7 @@
   },
   "client": [
     "BipedEntityModelAccessor",
-    "BipedEntityModelMixin"
-	]
+    "BipedEntityModelMixin",
+    "InGameHudMixin"
+  ]
 }

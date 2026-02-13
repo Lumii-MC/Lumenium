@@ -121,6 +121,7 @@ public final class SphereRenderer {
             RenderSystem.enableBlend();
             RenderSystem.defaultBlendFunc();
             RenderSystem.enableDepthTest();
+
             RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
 
             for (Sphere s : spheres) {

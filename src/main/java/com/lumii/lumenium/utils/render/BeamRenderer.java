@@ -135,6 +135,9 @@ public final class BeamRenderer {
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
         RenderSystem.disableCull();
+        RenderSystem.enableDepthTest();
+        RenderSystem.depthMask(false);
+
         RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
 
         for (Beam b : beams) {
@@ -168,7 +171,7 @@ public final class BeamRenderer {
                 } else {
                     float t = (ticksLived - b.scaleStart) / (float)(b.maxDuration - b.scaleStart);
                     t = MathHelper.clamp(t, 0f, 1f); // clamp to 0-1
-                    scale = b.initialScale + (b.initialScale *= b.targetScale) * t; // linear scale up
+                    scale = b.initialScale + (b.targetScale *= b.initialScale) * t; // linear scale up
                 }
             } else {
                 // Normal linear scaling

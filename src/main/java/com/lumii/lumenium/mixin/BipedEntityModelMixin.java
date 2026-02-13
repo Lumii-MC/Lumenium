@@ -26,7 +26,7 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity> {
         ItemStack stack = entity.getMainHandStack();
 
         if (stack.getItem() instanceof TwoHandedItem) {
-            // Set right arm to CROSSBOW_HOLD
+            // Set right arm to CROSSBOW_CHARGE
             ((BipedEntityModelAccessor) this).softlightlib$setRightArmPose(ArmPose.CROSSBOW_CHARGE);
 
             // Optionally set left arm to EMPTY or ITEM if off-hand looks weird

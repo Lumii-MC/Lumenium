@@ -42,7 +42,7 @@ public class TestItem extends Item implements TwoHandedItem, CustomItemNameColor
                     1f,
                     1f,
                     600f,
-                    new Identifier("minecraft:textures/misc/white.png"),
+                    new Identifier("lumenium:textures/rendered/gradient_bottom_up.png"),
                     20,
                     1f,
                     true,

@@ -12,12 +12,11 @@ public class UnclearableEffect extends StatusEffect {
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
-        return false; // effect does not tick
+        return false;
     }
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        // no ticking effect
     }
 
     @Override

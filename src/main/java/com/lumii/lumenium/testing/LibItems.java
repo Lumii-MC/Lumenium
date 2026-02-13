@@ -9,6 +9,7 @@ public class LibItems {
 
     public static final Item TEST_ITEM = register("test_item", new TestItem(new Item.Settings()));
     public static final Item ALT_TEST_ITEM = register("alt_test_item", new AltTestItem(ToolMaterials.NETHERITE, 3, -2.4f, new Item.Settings()));
+    public static final Item FLASH_TEST_ITEM = register("flash_test_item", new FlashTestItem(new Item.Settings()));
 
     private static Item register(String path, Item item) {
         return Registry.register(Registry.ITEM, new Identifier("lumenium", path), item);

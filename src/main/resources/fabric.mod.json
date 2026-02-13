@@ -22,6 +22,9 @@
 		"main": [
 			"com.lumii.lumenium.Lumenium"
 		],
+		"client": [
+			"com.lumii.lumenium.LumeniumClient"
+		],
 		"fabric-datagen": [
 			"com.lumii.lumenium.LumeniumDataGenerator"
 		]
