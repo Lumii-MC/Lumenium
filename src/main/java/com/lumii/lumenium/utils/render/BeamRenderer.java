@@ -29,7 +29,7 @@ public final class BeamRenderer {
         ClientTickEvents.START_CLIENT_TICK.register(client -> tick());
     }
 
-    // SERVER SCHEDULER
+    // server schedule
     public static void scheduleCommon(
             ServerWorld world,
             Vec3d pos,
@@ -69,7 +69,7 @@ public final class BeamRenderer {
         }
     }
 
-    // CLIENT SCHEDULER
+    // client schedule
     public static void scheduleClient(
             Vec3d pos,
             float radiusX,
@@ -88,7 +88,7 @@ public final class BeamRenderer {
         beams.add(new Beam(pos, radiusX, radiusZ, height, texture, duration, alpha, fade, fadeStart, initialScale, targetScale, rotationSpeed));
     }
 
-    // PACKET INIT + RENDER HOOK
+    // packet init stuff
     private static void init() {
         ClientPlayNetworking.registerGlobalReceiver(PACKET_ID, (client, handler, buf, sender) -> {
             Vec3d pos = new Vec3d(buf.readDouble(), buf.readDouble(), buf.readDouble());
@@ -115,7 +115,7 @@ public final class BeamRenderer {
         WorldRenderEvents.AFTER_TRANSLUCENT.register(BeamRenderer::render);
     }
 
-    // REMOVE DEAD BEAMS
+    // remove dead beams
     private static void tick() {
         beams.removeIf(b -> {
             b.prevDuration = b.duration;
@@ -124,7 +124,7 @@ public final class BeamRenderer {
         });
     }
 
-    // RENDER
+    // render
     private static void render(WorldRenderContext ctx) {
         if (beams.isEmpty()) return;
 
@@ -164,17 +164,17 @@ public final class BeamRenderer {
             float scale = b.initialScale;
 
             if (b.scaleUp) {
-                // How many ticks the beam has existed
+            
                 int ticksLived = b.maxDuration - b.duration;
                 if (ticksLived < b.scaleStart) {
-                    scale = b.initialScale; // before scaleStart
+                    scale = b.initialScale; 
                 } else {
                     float t = (ticksLived - b.scaleStart) / (float)(b.maxDuration - b.scaleStart);
-                    t = MathHelper.clamp(t, 0f, 1f); // clamp to 0-1
-                    scale = b.initialScale + (b.targetScale *= b.initialScale) * t; // linear scale up
+                    t = MathHelper.clamp(t, 0f, 1f);
+                    scale = b.initialScale + (b.targetScale *= b.initialScale) * t;
                 }
             } else {
-                // Normal linear scaling
+            
                 scale = b.initialScale + (b.initialScale + b.targetScale) * lifeProgress;
             }
 
@@ -197,7 +197,7 @@ public final class BeamRenderer {
         RenderSystem.disableBlend();
     }
 
-    // CYLINDER MESH
+    // cylinder
     private static void drawCylinder(Matrix4f m, float rx, float rz, float height, Identifier texture, float alpha) {
         final int slices = 32;
 
@@ -228,7 +228,7 @@ public final class BeamRenderer {
         Tessellator.getInstance().draw();
     }
 
-    // BEAM DATA
+    // data
     private static class Beam {
         Vec3d pos;
 
